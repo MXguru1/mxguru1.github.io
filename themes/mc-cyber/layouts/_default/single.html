@@ -1,0 +1,36 @@
+{{ define "main" }}
+<article>
+    <header class="article-header">
+        <p class="section-tag">// {{ with .Params.categories }}{{ index . 0 | upper }}{{ else }}POST{{ end }}</p>
+        <h1>{{ .Title }}</h1>
+        <div class="article-meta">
+            <span>{{ .Date.Format "2006-01-02" }}</span>
+            <span>{{ .ReadingTime }} min read</span>
+            <span>{{ .WordCount }} words</span>
+        </div>
+        {{ with .Params.tags }}
+        <div style="margin-top:1rem; display:flex; gap:0.4rem; flex-wrap:wrap;">
+            {{ range . }}
+            <a href="{{ "tags/" | relURL }}{{ . | urlize }}/" class="tag-pill">{{ . }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
+    </header>
+
+    <div class="article-body">
+        {{ .Content }}
+    </div>
+</article>
+
+<div style="margin-top:3rem; padding-top:2rem; border-top:1px solid var(--mc-border);">
+    <p class="section-tag">// navigation</p>
+    <div style="display:flex; justify-content:space-between; margin-top:1rem;">
+        {{ with .PrevInSection }}
+        <a href="{{ .RelPermalink }}" style="color:rgb(var(--mc-green)); text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:0.8rem;">← {{ .Title | truncate 40 }}</a>
+        {{ else }}<span></span>{{ end }}
+        {{ with .NextInSection }}
+        <a href="{{ .RelPermalink }}" style="color:rgb(var(--mc-green)); text-decoration:none; font-family:'JetBrains Mono',monospace; font-size:0.8rem;">{{ .Title | truncate 40 }} →</a>
+        {{ else }}<span></span>{{ end }}
+    </div>
+</div>
+{{ end }}

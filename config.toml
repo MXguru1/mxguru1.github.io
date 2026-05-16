@@ -1,0 +1,67 @@
+baseURL = 'https://mxguru1.github.io/'
+languageCode = 'en-us'
+title = 'Sovereign Hive — Local-First AI Security'
+theme = 'mc-cyber'
+enableEmoji = true
+
+[params]
+  mainSections = ["posts"]
+  featuredImageField = "featuredImage"
+  rssFullText = true
+
+  [params.colorScheme]
+    toggle = false
+    default = "dark"
+
+  [params.footer]
+    poweredBy = false
+    customText = "Sovereign Hive Pty Ltd — ABN 24 661 737 376"
+
+  [params.sidebar]
+    subtitle = "Your hardware. Your AI. Your sovereignty."
+    avatar = "/img/avatar.png"
+
+  [params.article]
+    math = false
+    toc = true
+    readingTime = true
+
+  [params.comments]
+    enabled = false
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 20
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 30
+  [[menu.main]]
+    identifier = "benchmarks"
+    name = "Benchmarks"
+    url = "/categories/benchmarks/"
+    weight = 40
+
+[taxonomies]
+  category = "categories"
+  series = "series"
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+    lineNos = true
+  [markup.goldmark.renderer]
+    unsafe = true

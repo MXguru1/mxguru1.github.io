@@ -1,0 +1,10 @@
+<nav class="navbar">
+    <div class="navbar-inner">
+        <a href="{{ "/" | relURL }}" class="navbar-brand">Sovereign_Hive</a>
+        <ul class="navbar-nav">
+            {{ range .Site.Menus.main }}
+            <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+</nav>

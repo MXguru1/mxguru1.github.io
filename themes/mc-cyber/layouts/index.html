@@ -1,0 +1,50 @@
+{{ define "main" }}
+<section class="grid-bg" style="padding:4rem 0 2rem; margin:0 -1.5rem; padding-left:1.5rem; padding-right:1.5rem;">
+    <p class="section-tag">// local-first ai security platform</p>
+    <h1 class="headline" style="font-size:2.8rem; margin-top:0.75rem; color:rgb(var(--mc-text));">
+        Sovereign Hive<br>
+        <span style="color:rgb(var(--mc-green));">Intel Feed</span><span class="mc-cursor"></span>
+    </h1>
+    <p style="margin-top:1.5rem; max-width:600px; color:rgb(var(--mc-muted)); line-height:1.6;">
+        Benchmarks, war game reports, architecture deep-dives, and sovereignty doctrine
+        from an 8-agent adversarial swarm running on consumer hardware. Zero cloud. Zero compromise.
+    </p>
+
+    <dl style="margin-top:2rem; display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(57,255,20,0.16); border:1px solid rgba(57,255,20,0.16);">
+        <div style="background:rgb(var(--mc-bg)); padding:1rem;">
+            <dd class="headline" style="font-size:1.8rem; color:rgb(var(--mc-green));">3,500+</dd>
+            <dt style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgb(var(--mc-muted)); margin-top:0.25rem;">Verified Tests</dt>
+        </div>
+        <div style="background:rgb(var(--mc-bg)); padding:1rem;">
+            <dd class="headline" style="font-size:1.8rem; color:rgb(var(--mc-green));">8ms</dd>
+            <dt style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgb(var(--mc-muted)); margin-top:0.25rem;">First Token</dt>
+        </div>
+        <div style="background:rgb(var(--mc-bg)); padding:1rem;">
+            <dd class="headline" style="font-size:1.8rem; color:rgb(var(--mc-green));">202.9</dd>
+            <dt style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgb(var(--mc-muted)); margin-top:0.25rem;">TPS Warm</dt>
+        </div>
+        <div style="background:rgb(var(--mc-bg)); padding:1rem;">
+            <dd class="headline" style="font-size:1.8rem; color:rgb(var(--mc-green));">11</dd>
+            <dt style="font-family:'JetBrains Mono',monospace; font-size:0.6rem; letter-spacing:0.18em; text-transform:uppercase; color:rgb(var(--mc-muted)); margin-top:0.25rem;">Sub-Projects</dt>
+        </div>
+    </dl>
+</section>
+
+<div style="margin-top:2rem;">
+    <p class="section-tag" style="margin-bottom:1rem;">// latest posts</p>
+    {{ range first 10 (where .Site.RegularPages "Section" "posts") }}
+    <a href="{{ .RelPermalink }}" class="post-card">
+        <div class="post-date">{{ .Date.Format "2006-01-02" }}</div>
+        <h2>{{ .Title }}</h2>
+        {{ with .Description }}<p class="post-desc">{{ . }}</p>{{ end }}
+        {{ with .Params.tags }}
+        <div style="margin-top:0.75rem; display:flex; gap:0.4rem; flex-wrap:wrap;">
+            {{ range . }}
+            <span class="tag-pill">{{ . }}</span>
+            {{ end }}
+        </div>
+        {{ end }}
+    </a>
+    {{ end }}
+</div>
+{{ end }}
